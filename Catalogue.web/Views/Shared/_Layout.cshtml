@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Catalogue.web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css"  />
+    <link rel="stylesheet" href="~/css/all.min.css"  />
+    <link rel="stylesheet" href="~/css/style.css"  />
+   
+  
+</head>
+<body class="h-screen w-full">
+  <header class="flex items-center border p-2 border-black">
+       <img src="~/images/logo.png" alt="" class="mr-8"  width="150" />
+      <div class=" flex space-x-6 flex-1">
+            <a href=""> Home&nbsp;<i class="fa fa-home"></i></a>
+            <a href="">Workout&nbsp;<i class="fa fa-car"></i></a>
+            <a href="">Learn&nbsp;<i class="fa fa-school"></i></a>
+            <a href="">Hub&nbsp;<i class="fa-brands fa-github"></i></a>
+            <a href="">Activity&nbsp;<i class="fa fa-chart-line"></i></a>
+            <a href="">Leaderboard&nbsp;<i class="fa fa-cash-register"></i></a>
+            <a href="">Community&nbsp;<i class="fa fa-satellite-dish"></i></a>
+            <a href="">FAQ&nbsp;<i class="fa fa-question"></i></a>
+      </div>
+      <div>
+          <div class="w-[40px] h-[40px] flex justify-center items-center rounded-full bg-gray-700">
+                <i class="fa-solid fa-user text-white"></i>
+          </div>
+      </div>
+  </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+       
+    </div>
+
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

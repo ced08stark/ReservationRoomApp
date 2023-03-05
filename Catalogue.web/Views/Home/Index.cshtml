@@ -1,0 +1,260 @@
+﻿@model IEnumerable<Catalogue.web.Models.SalleModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="flex">
+    <div class="p-3 flex flex-col space-y-4 border-r">
+        <div class="flex">
+            <div class="flex flex-1 space-x-2 items-center">
+                <img src="./images/user1.jpg" alt="" class="rounded-full" width="50" />
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg">
+                        Tony Monata
+                    </span>
+                    <span class="text-xs">scarface</span>
+                </div>
+            </div>
+            <a href="@Url.Action("Index", "Created")" class="w-[40px] h-[40px] rounded-full cursor flex justify-center items-center bg-green-500">
+                <i class="fa fa-plus text-white font-bold"></i>
+            </a>
+        </div>
+        
+        <div class="flex space-x-4 border-b pb-4 border-gray-100">
+            <div class="flex items-center space-x-2">
+                <div class="rounded-full bg-gray-200 w-[25px] h-[25px] flex justify-center items-center" ><i class="fa fa-sun"></i></div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg">257</span>
+                    <span class="text-xs font-light">students</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="rounded-full bg-gray-200 w-[25px] h-[25px] flex justify-center items-center"><i class="fa fa-fan"></i></div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg">31</span>
+                    <span class="text-xs font-light">teachers</span>
+                </div>
+            </div>
+        </div>
+        <div class="space-y-4">
+            <div class="flex space-x-2 items-center">
+                <span class="text-xl font-bold">Recomended</span>
+                <span class="w-[25px] h-[25px] flex justify-center items-center rounded-full text-sm bg-gray-200">@Model.Count()</span>
+            </div>
+            <div class="overflow-y-scroll h-auto  ">
+                <div class="space-y-8 h-[400px]">
+                    @if (Model != null && Model.Count() > 0)
+                    {
+                        foreach (var salle in Model)
+                        {
+                            <div class="flex flex-col p-2 rounded-xl bg-green-200 cursor-pointer relative ">
+                               
+                                <img src=@salle.Picture width="400" class="rounded-lg hover:scale-110" />
+                                <div class="flex space-x-6 p-1 justify-between items-center">
+                                    <span class=" w-[200px] lending-0 font-bold">@salle.Libelle</span>
+                                    <div class="flex space-x-4">
+                                        <span class="text-xs"><i class="fa fa-clock"></i>10min</span>
+                                        <span class="text-xs">@salle.Numero cal</span>
+                                    </div>
+                                   
+                                </div>
+                               
+                                <div class="flex items-center justify-between">
+                                    <div class="relative w-[150px] h-[30px]">
+                                        <img src="./images/user1.jpg" width="25" class="rounded-full absolute" />
+                                        <img src="./images/user2.jpg" width="25" class="rounded-full absolute left-4" />
+                                        <img src="./images/user3.jpg" width="25" class="rounded-full absolute left-8" />
+                                       
+                                    </div>
+                                    @if (!salle.isReserve)
+                                    {
+                                        <a href="@Url.Action("Index", "Reservation")" class="text-sm text-white px-10 rounded-full z-20 py-1 border-2 border-white">
+                                            reserver
+                                        </a>
+                                    }
+                                    
+                                </div>
+                            </div>
+                        }
+                    }
+                    
+                    <div class="flex flex-col p-2 rounded-xl bg-red-200 cursor-pointer relative ">
+                        <img src="./images/salle2.jpg" width="400" class="rounded-lg hover:scale-105 hover:transition-all duration-5" />
+                        <span class=" w-[200px] ">The 10-minutes ultimate legs workout</span>
+                        <div class="flex items-center justify-between">
+                            <div class="relative w-[150px] h-[30px]">
+                                <img src="./images/user1.jpg" width="25" class="rounded-full absolute" />
+                                <img src="./images/user2.jpg" width="25" class="rounded-full absolute left-4" />
+                                <img src="./images/user3.jpg" width="25" class="rounded-full absolute left-8" />
+
+                            </div>
+
+                            <div class="flex space-x-4">
+                                <span class="text-xs"><i class="fa fa-clock"></i>10min</span>
+                                <span class="text-xs">AS605 cal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="p-3 flex flex-col space-y-4 border-r">
+         <div class="flex items-center">
+             <span class="text-xl flex-1">Cours</span>
+             <span class="border-2 px-6 py-1 rounded-full">In Progress</span>
+         </div>
+         <div class="flex space-x-2 items-start">
+            <span class="w-[40px] h-[40px] text-white  rounded-full bg-black flex items-center justify-center">
+                <i class="fa fa-user"></i>
+             </span>
+             <div class="border-2 border-gray-200  flex flex-col w-[350px] cursor-pointer p-3 rounded-xl">
+                 <div class="flex justify-between mb-3">
+                    <span class="px-2 py-1 rounded-full bg-gray-200 text-xs">1/2</span>
+                    <span class="w-[20px] h-[20px] rounded-full bg-gray-200 flex items-center justify-center"><i class="fa fa-circle-ellipsis"></i></span>
+                 </div>
+                 <span class="text-xs text-gray-500">Cour de programmation Oriente objet</span>
+                 <p class="w-[250px] mb-1">Ce cour est pour les etudiants de premiere annee en genie logiciel</p>
+                 <div class="border-2 rounded-1 mb-1">
+                 </div>
+                 <div class="flex items-center justify-between">
+                     <span class="text-gray-500 text-xs">20 Feb,23</span>
+                    <span class="text-gray-500 text-xs">23 Mar,23</span>
+                 </div>
+             </div>
+         </div>
+        <div class="flex space-x-2 items-start">
+            <span class="w-[40px] h-[40px]  rounded-full bg-pink-400 flex items-center justify-center">
+                <i class="fa fa-user"></i>
+            </span>
+            <div class="border-2 border-gray-200  flex flex-col w-[350px] cursor-pointer p-3 rounded-xl">
+                <div class="flex justify-between mb-3">
+                    <span class="px-2 py-1 rounded-full bg-gray-200 text-xs">1/2</span>
+                    <span class="w-[20px] h-[20px] rounded-full bg-gray-200 flex items-center justify-center"><i class="fa fa-circle-ellipsis"></i></span>
+                </div>
+                <span class="text-xs text-gray-500">Cour de programmation Oriente objet</span>
+                <p class="w-[250px] mb-1">Ce cour est pour les etudiants de premiere annee en genie logiciel</p>
+                <div class="border-2 rounded-1 mb-1">
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-500 text-xs">20 Feb,23</span>
+                    <span class="text-gray-500 text-xs">23 Mar,23</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex space-x-2 items-start">
+            <span class="w-[40px] h-[40px]  rounded-full bg-yellow-400 flex items-center justify-center">
+                <i class="fa fa-user"></i>
+            </span>
+             <div class="border-2 border-gray-200  flex flex-col w-[350px] cursor-pointer p-3 rounded-xl">
+                 <div class="flex justify-between mb-3">
+                    <span class="px-2 py-1 rounded-full bg-gray-200 text-xs">2/2</span>
+                    <span class="w-[20px] h-[20px] rounded-full bg-gray-200 flex items-center justify-center"><i class="fa fa-circle-ellipsis"></i></span>
+                 </div>
+                 <span class="text-xs text-gray-500">Series of nutrition lecture</span>
+                 <p class="w-[250px] mb-1">Dietary ntriens associated with short and long sleep duration</p>
+                 <div class="border-2 rounded-1 mb-1">
+                 </div>
+                 <div class="flex items-center justify-between">
+                    <span class="text-gray-500 text-xs">20 Feb,23</span>
+                    <span class="text-gray-500 text-xs">20 Dec,22</span>
+                 </div>
+             </div>
+         </div>
+        
+
+    </div>
+    <div class="p-3 flex flex-col space-y-4 flex-1">
+        <div class="flex justify-between items-center">
+            <span class="text-bold text-xl">Today shuldle</span>
+            <div class="flex space-x-2">
+                <div class="w-[20px] h-[20px] rounded-full bg-gray-200 flex justify-center items-center">
+                    <i class="fa fa-arrow-left"></i>
+                </div>
+                <div class="w-[20px] h-[20px] rounded-full bg-gray-200 flex justify-center items-center">
+                    <i class="fa fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3">
+            <div class="border-1 border flex-1 relative">
+            </div>
+            <span class="text-gray-500 text-sm">09h:00</span>
+        </div>
+       
+        <div class="bg-purple-200 flex flex-col p-3 rounded-xl">
+            <div class="flex items-center mb-3">
+                <div class="flex space-x-2 flex-1">
+                    <div class="px-4 py-1 bg-white rounded-xl">
+                        09h:30 - 12h:30
+                    </div>
+                    <div class="w-[30px] h-[30px] rounded-full bg-white flex justify-center items-center">
+                        <div class="w-[20px] h-[20px] rounded-full bg-gray-200 bg-purple-200 flex justify-center items-center">
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[25px] h-[25px] rounded-full bg-gray-200 flex justify-center items-center">
+
+                </div>
+            </div>
+            <span class="text-sm text-gray-500">routine with time Reddish</span>
+            <h1 class="font-semiBold">the upper-body workout</h1>
+        </div>
+        <div class="flex items-center space-x-3">
+            <div class="border-1 border flex-1 relative">
+            </div>
+            <span class="text-gray-500 text-sm">15h:00</span>
+        </div>
+        <div class="bg-purple-200 flex flex-col p-3 rounded-xl">
+            <div class="flex items-center mb-3">
+                <div class="flex space-x-2 flex-1">
+                    <div class="px-4 py-1 bg-white rounded-xl">
+                        15h:30 - 16h:30
+                    </div>
+                    <div class="w-[30px] h-[30px] rounded-full bg-white flex justify-center items-center">
+                        <div class="w-[20px] h-[20px] rounded-full bg-gray-200 bg-purple-200 flex justify-center items-center">
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[25px] h-[25px] rounded-full bg-green-500 flex justify-center items-center">
+                </div>
+            </div>
+            <span class="text-sm text-gray-500">routine with time Reddish</span>
+            <h1 class="font-semiBold">the upper-body workout</h1>
+        </div>
+         <div class="flex items-center space-x-3">
+            <div class="border-1 border flex-1 relative">
+            </div>
+            <span class="text-gray-500 text-sm">17h:00</span>
+        </div>
+
+        <div class="bg-purple-200 flex flex-col p-3 rounded-xl">
+            <div class="flex items-center mb-3">
+                <div class="flex space-x-2 flex-1">
+                    <div class="px-4 py-1 bg-white rounded-xl">
+                        17h:30 - 21h:00
+                    </div>
+                    <div class="w-[30px] h-[30px] rounded-full bg-white flex justify-center items-center">
+                        <div class="w-[20px] h-[20px] rounded-full bg-gray-200 bg-purple-200 flex justify-center items-center">
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[25px] h-[25px] rounded-full bg-green-500 flex justify-center items-center">
+
+                </div>
+            </div>
+            <span class="text-sm text-gray-500">routine with time Reddish</span>
+            <h1 class="font-semiBold">the upper-body workout</h1>
+        </div>
+        <div class="flex items-center space-x-3">
+            <div class="border-1 border flex-1 relative">
+            </div>
+            <span class="text-gray-500 text-sm">21h:00</span>
+        </div>
+    </div>
+</div>
